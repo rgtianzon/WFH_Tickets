@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ticket</title>
+</head>
+<body>
+    <h1>Submit a Ticket</h1>
+    <form action="/tickets" method="POST">
+        <label for="fullName">Select Your Name:</label>
+            <select>
+                <% for (let ros of roster){ %>
+                    <option><%= ros.name %></option>
+                <% } %>
+            </select>
+    </form>
+</body>
+</html>
