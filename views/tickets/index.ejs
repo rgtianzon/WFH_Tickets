@@ -21,8 +21,10 @@
                 <th>Date Submitted</th>
                 <th>Name</th>
                 <th>Query Type</th>
+                <th>Others(Specified)</th>
                 <th>Severity</th>
                 <th>Discription</th>
+                <th>Status</th>
             </tr>
                 <% for (let ticket of tickets){ %>
                 <tr>
@@ -30,16 +32,18 @@
                     <td><%= ticket.created_at %> </td>
                     <td><%= ticket.name %> </td>
                     <td><%= ticket.queryType %> </td>
+                    <td><%= ticket.otherSpecify %> </td>
                     <td><%= ticket.severity %> </td>
                     <td><%= ticket.issueDiscription %> </td>
-                    <td><a href="/tickets/<%= ticket._id %> ">EDIT</a></td>
+                    <td><%= ticket.status %> </td>
+                    <td><a href="/tickets/<%= ticket._id %>/edit ">EDIT</a></td>
                     
                 </tr>
                 <% } %>
         </table>
+        <form action="/logout" method="POST">
+            <button>LOG OUT</button>
+        </form>
 
-        <ul>
-
-        </ul>
     </body>
 </html>

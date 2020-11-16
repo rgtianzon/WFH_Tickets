@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Ticket</title>
+</head>
+<body>
+    <h1>Edit Ticket</h1>
+    <form action="/tickets/<%= tickets._id%>?_method=PUT" method="POST">
+        <input type="text" name="ticketID" id="ticketID" placeholder="Ticket ID" value="<%= tickets.ticketID %>">
+        <input type="text" name="name" id="name" placeholder="Fullname" value="<%= tickets.name %>">
+        <input type="text" name="email" id="email" placeholder="Email" value="<%= tickets.email %> ">
+        <input type="text" name="manEmail" id="manEmail" placeholder="Manager's Email" value="<%= tickets.manEmail %> ">
+        <input type="text" name="department" id="department" placeholder="Account" value="<%= tickets.department %> ">
+        <select name="queryType">
+            <option value="">Select Query Type</option>
+            <option value="Internet Outage" <%= tickets.queryType === "Internet Outage" ? "selected": "" %>>Internet Outage</option>
+            <option value="Power Outage" <%= tickets.queryType === "Power Outage" ? "selected": "" %>>Power Outage</option>
+            <option value="Intermittent internet issue" <%= tickets.queryType === "Intermittent internet issue" ? "selected": "" %>>Intermittent internet issue</option>
+            <option value="Insufficient Data allocation" <%= tickets.queryType === "Insufficient Data allocation" ? "selected": "" %>>Insufficient Data allocation</option>
+            <option value="PC/Hardware Issues (Monitor, keyboard and mouse)" <%= tickets.queryType === "PC/Hardware Issues (Monitor, keyboard and mouse)" ? "selected": "" %>>PC/Hardware Issues (Monitor, keyboard and mouse)</option>
+            <option value="Software Issues (Apps, Tools, Emails, etc.)" <%= tickets.queryType === "Software Issues (Apps, Tools, Emails, etc.)" ? "selected": "" %>>Software Issues (Apps, Tools, Emails, etc.)</option>
+            <option value="Others (to be specified)" <%= tickets.queryType === "Others (to be specified)" ? "Others (to be specified)": "" %>>Others (to be specified)</option>
+        </select>
+        <textarea name="otherSpecify" rows="4" cols="50" placeholder="Please Specify"></textarea>
+        <select name="severity">
+            <option value="">Select Severity</option>
+            <option value="Critical - unable to work" <%= tickets.queryType === "Critical - unable to work" ? "selected": "" %>>Critical - unable to work</option>
+            <option value="Severe - interfering with duties most of the time" <%= tickets.queryType === "Severe - interfering with duties most of the time" ? "selected": "" %>>Severe - interfering with duties most of the time</option>
+            <option value="Moderate - interfering with duties occasionally" <%= tickets.queryType === "Moderate - interfering with duties occasionally" ? "selected": "" %>>Moderate - interfering with duties occasionally</option>
+            <option value="Low - no/minimal disruption" <%= tickets.queryType === "Low - no/minimal disruption" ? "selected": "" %>>Low - no/minimal disruption</option>
+        </select>
+        <textarea name="issueDiscription" placeholder="Add Necessary Description"></textarea>
+        <input type="submit">
+    </form>
+</body>
+</html>

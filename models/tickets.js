@@ -10,19 +10,13 @@ const ticketSchema = new mongoose.Schema({
     severity: String,
     otherSpecify: String,
     issueDiscription: String,
+    status: String,
     image: String,
+    comments: [{
+        commentName: String,
+        commentBody: String,
+    }, { timestamps: { createdAt: 'created_at' } }]
 }, { timestamps: { createdAt: 'created_at' } });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);
 module.exports = Ticket;
-
-const rosterSchema = new mongoose.Schema({
-    empID: Number,
-    name: String,
-    email: String,
-    manEmail: String,
-    Account: String,
-}, { timestamps: { createdAt: 'created_at' } });
-
-const Roster = mongoose.model('Roster', rosterSchema);
-module.exports = Roster;

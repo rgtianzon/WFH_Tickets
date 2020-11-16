@@ -4,16 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Ticket</title>
+    <style>
+        .hid {
+            display: none;
+        }
+        body {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Submit a Ticket</h1>
     <form action="/tickets" method="POST">
-        <label for="fullName">Select Your Name:</label>
-            <select>
-                <% for (let ros of roster){ %>
-                    <option><%= ros.name %></option>
-                <% } %>
-            </select>
+        <!-- <input type="text" name="ticketID" id="ticketID" placeholder="Ticket ID"> -->
+        <select name="name" id="name">
+                <option value="">SELECT NAME</option>
+            <% for (let ros of roster){ %>
+                <option value="<%= ros.name %>"><%= ros.name %></option>
+            <% } %> 
+        </select>
+        <br>
+        <br>
+        <!-- <input type="text" name="name" id="name" placeholder="Fullname"> -->
+        <input type="text" name="email" id="email" placeholder="Email">
+        <br>
+        <br>
+        <input type="text" name="manEmail" id="manEmail" placeholder="Manager's Email">
+        <br>
+        <br>
+        <input type="text" name="department" id="department" placeholder="Account">
+        <br>
+        <br>
+        <select name="queryType" id="queryType">
+            <option value="">Select Query Type</option>
+            <option value="Internet Outage">Internet Outage</option>
+            <option value="Power Outage">Power Outage</option>
+            <option value="Intermittent internet issue">Intermittent internet issue</option>
+            <option value="Insufficient Data allocation">Insufficient Data allocation</option>
+            <option value="PC/Hardware Issues (Monitor, keyboard and mouse)">PC/Hardware Issues (Monitor, keyboard and mouse)</option>
+            <option value="Software Issues (Apps, Tools, Emails, etc.)">Software Issues (Apps, Tools, Emails, etc.)</option>
+            <option value="Others (to be specified)" id="others">Others (to be specified)</option>
+        </select>
+        <br>
+        <br>
+        <textarea name="otherSpecify" class="hid" id="otherSpecify" rows="4" cols="50" placeholder="Please Specify"></textarea>
+        <br>
+        <br>
+        <select name="severity">
+            <option value="">Select Severity</option>
+            <option value="Critical - unable to work">Critical - unable to work</option>
+            <option value="Severe - interfering with duties most of the time">Severe - interfering with duties most of the time</option>
+            <option value="Moderate - interfering with duties occasionally">Moderate - interfering with duties occasionally</option>
+            <option value="Low - no/minimal disruption">Low - no/minimal disruption</option>
+        </select>
+        <br>
+        <br>
+        <textarea name="issueDiscription" placeholder="Add Necessary Description"></textarea>
+        <br>
+        <br>
+        <input type="submit">
     </form>
+    <script>
+        const queryType = document.querySelector('#queryType');
+        const otherSpecify =  document.querySelector('#otherSpecify');
+        const others = document.querySelector('#others');
+        queryType.addEventListener('click', function(){
+            if (queryType.value === "Others (to be specified)" && otherSpecify.classList.toggle('hid')){
+                otherSpecify.classList.toggle('hid')
+            } else if (queryType.value !== "Others (to be specified)" && !otherSpecify.classList.toggle('hid')) {
+                otherSpecify.classList.toggle('hid')
+            }
+        });
+    </script>
 </body>
 </html>
